@@ -1,0 +1,26 @@
+Options -Indexes
+
+# ---------------------------------------------------------------
+# Réécriture d'URL → tout passe par public/index.php
+# ---------------------------------------------------------------
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /php-mvc-project/public/
+
+    # Ignore les fichiers et dossiers existants (assets, images…)
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+
+    # Redirige tout vers index.php
+    RewriteRule ^(.*)$ index.php [QSA,L]
+</IfModule>
+
+# ---------------------------------------------------------------
+# En-têtes de sécurité HTTP
+# ---------------------------------------------------------------
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

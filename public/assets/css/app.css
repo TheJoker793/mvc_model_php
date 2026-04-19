@@ -1,0 +1,285 @@
+/* =============================================================
+   public/assets/css/app.css  –  Styles personnalisés
+   ============================================================= */
+
+/* --- Variables CSS --- */
+:root {
+    --primary:     #0d6efd;
+    --success:     #198754;
+    --danger:      #dc3545;
+    --warning:     #ffc107;
+    --sidebar-bg:  #1e2a38;
+    --sidebar-w:   260px;
+    --topbar-h:    60px;
+}
+
+/* --- Reset / Base --- */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    color: #212529;
+    margin: 0;
+}
+
+/* --- Layout avec sidebar --- */
+.wrapper {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: var(--sidebar-w);
+    background: var(--sidebar-bg);
+    color: #adb5bd;
+    position: fixed;
+    top: 0; left: 0;
+    height: 100vh;
+    overflow-y: auto;
+    transition: width 0.3s;
+    z-index: 100;
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 18px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    text-decoration: none;
+}
+
+.sidebar-brand:hover { color: #fff; }
+
+.sidebar-brand .brand-icon {
+    width: 36px; height: 36px;
+    background: var(--primary);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem; color: #fff;
+}
+
+.sidebar-nav { padding: 12px 0; }
+
+.nav-section-title {
+    font-size: .65rem;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    padding: 14px 18px 6px;
+    color: #6c757d;
+}
+
+.sidebar-nav .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    color: #adb5bd;
+    text-decoration: none;
+    border-radius: 6px;
+    margin: 2px 8px;
+    transition: background .2s, color .2s;
+    font-size: .9rem;
+}
+
+.sidebar-nav .nav-link:hover,
+.sidebar-nav .nav-link.active {
+    background: rgba(255,255,255,.08);
+    color: #fff;
+}
+
+.sidebar-nav .nav-link i { width: 20px; text-align: center; }
+
+/* Main content */
+.main-content {
+    margin-left: var(--sidebar-w);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Topbar */
+.topbar {
+    height: var(--topbar-h);
+    background: #fff;
+    border-bottom: 1px solid #dee2e6;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+}
+
+.topbar-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #343a40;
+}
+
+.topbar-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: .9rem;
+}
+
+.avatar {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 600;
+    font-size: .85rem;
+}
+
+/* Page body */
+.page-body {
+    padding: 28px 24px;
+    flex: 1;
+}
+
+/* --- Stat Cards --- */
+.stat-card {
+    border-radius: 12px;
+    padding: 20px 22px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,.07);
+    transition: transform .2s, box-shadow .2s;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,.12);
+}
+
+.stat-icon {
+    width: 52px; height: 52px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    opacity: .9;
+}
+
+.stat-value { font-size: 1.8rem; font-weight: 700; line-height: 1; }
+.stat-label { font-size: .8rem; color: #6c757d; margin-top: 4px; }
+
+/* --- Tables --- */
+.table-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    overflow: hidden;
+}
+
+.table-card .card-header {
+    background: #fff;
+    border-bottom: 1px solid #f0f2f5;
+    padding: 16px 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.table th {
+    background: #f8f9fa;
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: #6c757d;
+    font-weight: 600;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.table td { vertical-align: middle; font-size: .9rem; }
+
+/* Badge stock */
+.stock-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: .75rem;
+    font-weight: 600;
+}
+
+.stock-ok      { background: #d1e7dd; color: #0a3622; }
+.stock-warning { background: #fff3cd; color: #664d03; }
+.stock-empty   { background: #f8d7da; color: #58151c; }
+
+/* --- Auth pages --- */
+.auth-wrapper {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1e2a38 0%, #0d6efd 100%);
+    padding: 20px;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 420px;
+    border-radius: 16px;
+    box-shadow: 0 16px 48px rgba(0,0,0,.2);
+    overflow: hidden;
+}
+
+.auth-header {
+    background: #fff;
+    padding: 28px 32px 0;
+    text-align: center;
+}
+
+.auth-logo {
+    width: 52px; height: 52px;
+    background: var(--primary);
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    color: #fff;
+    margin: 0 auto 14px;
+}
+
+.auth-body { background: #fff; padding: 24px 32px 32px; }
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .sidebar { width: 60px; }
+    .sidebar-brand span,
+    .sidebar-nav .nav-link span,
+    .nav-section-title { display: none; }
+    .main-content { margin-left: 60px; }
+}
+
+/* --- Utilitaires --- */
+.text-truncate-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.action-btn {
+    padding: 4px 10px;
+    font-size: .8rem;
+}
+
+.role-badge {
+    font-size: .7rem;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
